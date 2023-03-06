@@ -1,0 +1,1 @@
+export const URI = "https://ctse-mobile-app.onrender.com"
