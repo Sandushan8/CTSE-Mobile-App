@@ -1,27 +1,19 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import UserHome from "../../screens/userScreens/userHome";
-import ProfileScreen from "../../screens/userScreens/userprofile";
+
+import DrawerContent from "../../screens/userScreens/DrawerContent";
+import MainTabScreen from "../../screens/userScreens/MainTabScreen";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import DetailsScreen from "../../screens/userScreens/DetailsScreen";
+
+const Drawer = createDrawerNavigator();
 
 const User = () => {
-  const Stack = createStackNavigator();
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: true,
-        drawerActiveBackgroundColor: "#3BB77E",
-        drawerActiveTintColor: "#fff",
-        drawerLabelStyle: {
-          marginLeft: -25,
-          fontSize: 15,
-          marginVertical: 2,
-        },
-      }}
-      initialRouteName="ProfileScreen"
-    >
-      <Stack.Screen name="UserHome" component={UserHome} />
-      <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
-    </Stack.Navigator>
+    <Drawer.Navigator drawerContent={(props) => <DrawerContent {...props} />}>
+      <Drawer.Screen name="Pet & Doctor" component={MainTabScreen} />
+      <Drawer.Screen name="SupportScreen" component={DetailsScreen} />
+    </Drawer.Navigator>
   );
 };
 
